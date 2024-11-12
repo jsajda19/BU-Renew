@@ -66,8 +66,6 @@ bldg_energy = gather_energy(bldg_names,bldg_data)
 num_array = 365
 daily = split_daily(bldg_energy,num_array)
 
-print(len(daily))
-
 energy = [total_ind_energy(bldg) for bldg in daily]
 
 tot_energy = total_energy(energy)
@@ -77,6 +75,7 @@ dates_list = dates_2023.to_list()  # List of dates
 date = dates_2023.to_numpy()  # NumPy array of dates
 
 #plot energy vs timestamp
+plt.figure()
 plt.plot(date, tot_energy)
 plt.title('Total Energy Consumed on Campus vs Day')
 plt.ylabel('Energy (kWh)')

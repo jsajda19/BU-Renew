@@ -28,8 +28,6 @@ Decker = pd.read_excel(file, sheet_name='Decker Hall',skiprows=2)
 Packer = pd.read_excel(file, sheet_name='Packer Hall',skiprows=2)
 
 #create separate arrays for each column in the parking lots tab
-timestamp_park = parking_lots['Timestamp']
-park_kW = parking_lots['Power (kW)']
 park_energy = parking_lots['Energy (kWh)']
 armstrong_energy = Armstrong['Energy (kWh)']
 brower_energy = Brower['Energy (kWh)']
@@ -39,8 +37,6 @@ packer_energy = Packer['Energy (kWh)']
 
 #split power, energy, and timestamp lists into daily lists
 num_arrays = 365
-daily_time = np.array_split(timestamp_park, num_arrays)
-daily_power = np.array_split(park_kW, num_arrays)
 daily_parkenergy = np.array_split(park_energy, num_arrays)
 daily_armenerg = np.array_split(armstrong_energy, num_arrays)
 daily_browenerg = np.array_split(brower_energy, num_arrays) 
@@ -73,12 +69,9 @@ for i in range(1,152,1):
     newtotenergy[i+21] = y[i-1]
 
 #plot energy vs timestamp
+plt.figure()
 plt.plot(date, newtotenergy)
 plt.title('Total Energy Produced on Campus vs Day')
 plt.ylabel('Energy (kWh)')
 plt.xlabel('Day')
 plt.savefig('Energyproduction.png')
-
-print(newtotenergy)
-print(len(newtotenergy))
-print(slope)

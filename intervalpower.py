@@ -75,6 +75,7 @@ dates_list = dates_2023.to_list()  # List of dates
 date = dates_2023.to_numpy()  # NumPy array of dates
 
 #plot energy vs timestamp
+plt.figure()
 plt.plot(date, tot_power)
 plt.title('Total Power Consumed on Campus vs Day')
 plt.ylabel('Power (kW)')
